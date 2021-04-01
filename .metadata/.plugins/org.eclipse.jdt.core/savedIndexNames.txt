@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\pires\Documents\GitHub\BancoDados1\.metadata\.plugins\org.eclipse.jdt.core
+520220882.index
+1716811500.index
+2335229779.index
