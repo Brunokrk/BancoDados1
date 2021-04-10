@@ -1,0 +1,30 @@
+package persistencia;
+
+import java.sql.*;
+
+
+public class AnimalDAO {
+
+	private static AnimalDAO instance = null; //tornando um singleton
+	
+	private AnimalDAO() {
+		//Construtor
+		Connection conexao = Conexao.getConexao();
+		try {
+			//Expressões SQL
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public static AnimalDAO getInstance() {
+		//pegando instância do singleton
+		if(instance == null) {
+			instance = new AnimalDAO();
+		}
+		return instance;
+	}
+	
+}

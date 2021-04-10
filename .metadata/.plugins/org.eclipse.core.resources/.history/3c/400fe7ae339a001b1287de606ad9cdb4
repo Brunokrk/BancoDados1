@@ -1,0 +1,10 @@
+package dados;
+
+public class Especie {
+	private int codEspecie;
+	private String nomeEspecie;
+	private int expectativaEspecie;
+	
+	
+	
+}

@@ -1,0 +1,39 @@
+package dados;
+
+public class Especie {
+	private int codEspecie;
+	private String nomeEspecie;
+	private int expectativaEspecie;
+	
+	public Especie(int codEspecie, String nomeEspecie, int expectativaEspecie) {
+		this.codEspecie = codEspecie;
+		this.nomeEspecie = nomeEspecie;
+		this.expectativaEspecie = expectativaEspecie;
+	}
+	
+	public Especie() {
+		//construtor vazio para tornar opcional a utilização ou não do outro
+	}
+	
+	public int getCodEspecie() {
+		return codEspecie;
+	}
+	public void setCodEspecie(int codEspecie) {
+		this.codEspecie = codEspecie;
+	}
+	public String getNomeEspecie() {
+		return nomeEspecie;
+	}
+	public void setNomeEspecie(String nomeEspecie) {
+		this.nomeEspecie = nomeEspecie;
+	}
+	public int getExpectativaEspecie() {
+		return expectativaEspecie;
+	}
+	public void setExpectativaEspecie(int expectativaEspecie) {
+		this.expectativaEspecie = expectativaEspecie;
+	}
+	
+	
+	
+}

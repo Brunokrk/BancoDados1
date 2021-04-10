@@ -1,0 +1,17 @@
+package persistencia;
+
+import java.sql.*;
+
+public class AnimalDAO {
+
+	private static AnimalDAO instance = null; //tornando um singleton
+	
+	
+	public static AnimalDAO getInstance() {
+		if(instance == null) {
+			instance = new AnimalDAO();
+		}
+		return instance;
+	}
+	
+}

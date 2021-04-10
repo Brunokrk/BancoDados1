@@ -1,0 +1,27 @@
+package persistencia;
+
+import java.sql.*;
+
+public class EspecieDAO {
+	private static EspecieDAO instance = null;
+	
+	public static EspecieDAO getInstance() {
+		if(instance ==null) {
+			instance = new EspecieDAO();
+			
+		}
+		return instance;
+	}
+
+	private EspecieDAO() {
+		//Construtor
+		Connection conexao = Conexao.getConexao();
+		
+		try {
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}	

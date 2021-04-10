@@ -1,0 +1,53 @@
+package persistencia;
+
+import java.sql.*;
+import dados.Especie;
+
+import java.util.ArrayList;
+
+
+public class EspecieDAO {
+	private static EspecieDAO instance = null;
+
+	//Prepared Statements
+	private PreparedStatement selectAll; 
+	private PreparedStatement insert; //ok
+	private PreparedStatement join;
+	private PreparedStatement subagreg;
+	
+	
+	public static EspecieDAO getInstance() {
+		if(instance ==null) {
+			instance = new EspecieDAO();
+		}
+		return instance;
+	}
+
+	private EspecieDAO() {
+		//Construtor
+		
+		Connection conexao = Conexao.getConexao();
+		try {
+			//Expressões SQL
+			insert = conexao.prepareStatement("insert into especies values (?, ?, ?)");
+			selectAll = conexao.prepareStatement("select * from especies");
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void insert (Especie esp) {
+		try {
+			insert.setInt(1, esp.getCodEspecie());
+			insert.setString(2, esp.getNomeEspecie());
+			insert.setInt(3, esp.getExpectativaEspecie());
+			insert.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}	

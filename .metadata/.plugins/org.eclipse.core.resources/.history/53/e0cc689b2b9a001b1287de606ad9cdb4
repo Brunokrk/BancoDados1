@@ -1,0 +1,11 @@
+package persistencia;
+
+import java.sql.*;
+
+public class EspecieDAO {
+	private static EspecieDAO instance = null;
+	
+	private EspecieDAO() {
+		
+	}
+}	

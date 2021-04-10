@@ -1,0 +1,38 @@
+package dados;
+ import java.util.Date;
+ 
+public class Animal {
+	
+	private String nomeAnimal;
+	private int codAnimal;
+	private int codEspecie;
+	private int codAnimalMae;
+	//private Date dtNascAnimal;
+	public String getNomeAnimal() {
+		return nomeAnimal;
+	}
+	public void setNomeAnimal(String nomeAnimal) {
+		this.nomeAnimal = nomeAnimal;
+	}
+	public int getCodAnimal() {
+		return codAnimal;
+	}
+	public void setCodAnimal(int codAnimal) {
+		this.codAnimal = codAnimal;
+	}
+	public int getCodEspecie() {
+		return codEspecie;
+	}
+	public void setCodEspecie(int codEspecie) {
+		this.codEspecie = codEspecie;
+	}
+	public int getCodAnimalMae() {
+		return codAnimalMae;
+	}
+	public void setCodAnimalMae(int codAnimalMae) {
+		this.codAnimalMae = codAnimalMae;
+	}
+	
+	
+	
+}

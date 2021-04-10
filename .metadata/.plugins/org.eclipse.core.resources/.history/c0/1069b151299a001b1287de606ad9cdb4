@@ -1,0 +1,11 @@
+package dados;
+ import java.util.Date;
+ 
+public class Animal {
+	
+	private String nomeAnimal;
+	private int codAnimal;
+	private int codEspecie;
+	private int codAnimalMae;
+	private Date dtNascAnimal;
+}
