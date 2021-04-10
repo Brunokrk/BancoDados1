@@ -22,8 +22,6 @@ public class AnimalDAO {
 		try {
 			//Expressões SQL
 			insert = conexao.prepareStatement("insert into animais values(?,?,?,?,?,?)");
-			selectAll = conexao.prepareStatement("select * from animais");
-			join = conexao.prepareStatement("select a.nomeanimal from animais a join especies e on a.codespecie = e.codespecie where e.expectativaespecie > 10");
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -55,43 +53,13 @@ public class AnimalDAO {
 	}
 	
 	public List<Animal> selectAll() {
-		List<Animal> animais = new ArrayList<Animal>();
+		List<Especie> animais = new ArrayList<Especie>();
 		
-		try {
-			ResultSet rs = selectAll.executeQuery();
-			while(rs.next()) {
-				String nome = rs.getString(1);
-				int codEsp = rs.getInt(2);
-				int codAni = rs.getInt(3);
-				int codAniPai = rs.getInt(4);
-				int codAniMae = rs.getInt(5);
-				Date date = rs.getDate(6);
-				animais.add(new Animal(nome, codAni, codEsp, codAniMae, codAniPai, date));
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
 		
 		return animais;
 	}
 	
-	public List<Animal> join(){
-		List<Animal> animais = new ArrayList<Animal>();
-		
-		try {
-			ResultSet rs = join.executeQuery();
-			while(rs.next()) {
-				Animal a =new Animal();
-				String nome = rs.getString(1);
-				a.setNomeAnimal(nome);
-				animais.add(a);
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return animais;
-	}
+	
 	
 	
 }

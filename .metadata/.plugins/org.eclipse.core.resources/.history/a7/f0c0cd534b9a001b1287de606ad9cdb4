@@ -75,23 +75,7 @@ public class AnimalDAO {
 		return animais;
 	}
 	
-	public List<Animal> join(){
-		List<Animal> animais = new ArrayList<Animal>();
-		
-		try {
-			ResultSet rs = join.executeQuery();
-			while(rs.next()) {
-				Animal a =new Animal();
-				String nome = rs.getString(1);
-				a.setNomeAnimal(nome);
-				animais.add(a);
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return animais;
-	}
+	
 	
 	
 }

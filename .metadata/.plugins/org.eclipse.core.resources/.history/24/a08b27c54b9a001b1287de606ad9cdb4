@@ -42,7 +42,7 @@ public class Main {
 		
 		List<Animal> anis = animalDAO.getInstance().join();
 		for(Animal a : anis) {
-			System.out.println(a.getNomeAnimal());
+			System.out.println(a.toString());
 		
 		}
 
