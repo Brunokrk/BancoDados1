@@ -22,10 +22,6 @@ public class Main {
 		//Especie e1 = new Especie(14, "Bruno", 12);
 		//especieDAO.getInstance().insert(e1);
 		
-		String datastr = "2017-10-10";
-		Date date = Date.valueOf(datastr);
-		Animal a1 = new Animal("Mel", 67, 1, 10, 9, date);
-		animalDAO.getInstance().insert(a1);		
 		
 		//List<Especie> esps = especieDAO.getInstance().selectAll();
 		//for(Especie e: esps) {
@@ -44,10 +40,10 @@ public class Main {
 		//	System.out.println(a.toString());
 		//}
 		
-		//List<Animal> anis = animalDAO.getInstance().join();
-		//for(Animal a : anis) {
-			//System.out.println(a.getNomeAnimal());
-		//}
+		List<Animal> anis = animalDAO.getInstance().join();
+		for(Animal a : anis) {
+			System.out.println(a.getNomeAnimal());
+		}
 
 	}
 }

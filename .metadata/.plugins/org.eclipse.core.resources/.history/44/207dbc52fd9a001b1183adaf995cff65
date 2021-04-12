@@ -24,7 +24,7 @@ public class Main {
 		
 		String datastr = "2017-10-10";
 		Date date = Date.valueOf(datastr);
-		Animal a1 = new Animal("Mel", 67, 1, 10, 9, date);
+		Animal a1 = new Animal("Mel", 27, 1, 10, 9, date);
 		animalDAO.getInstance().insert(a1);		
 		
 		//List<Especie> esps = especieDAO.getInstance().selectAll();
