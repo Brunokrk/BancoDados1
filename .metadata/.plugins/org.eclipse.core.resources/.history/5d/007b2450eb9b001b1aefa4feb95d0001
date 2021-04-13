@@ -1,0 +1,61 @@
+package apresentacao;
+
+import persistencia.EspecieDAO;
+import persistencia.AnimalDAO;
+
+import java.sql.Date;
+
+import java.util.List;
+import java.util.Scanner;
+
+import dados.Especie;
+
+import dados.Animal;
+
+public class Main {
+
+	private static EspecieDAO especieDAO;
+	private static AnimalDAO animalDAO;
+	
+	
+	public static void main(String[] args) {
+		
+		int op = -1;
+		while(op!=0) {
+			op = menu();
+			switch (op){
+            	case 1: 
+            		//especieDAO.insert(esp);
+            		break;
+            	case 2: 
+            		//animalDAO.insert(animal);
+                    break;
+            	case 3: 
+            		//animalDAO.selectAll();
+                    break;
+            	case 4: 
+            		animalDAO.join();
+                    break;
+            	case 5:
+            		
+                    break;
+			}
+		}
+	}
+	
+	
+	private static int menu() {
+        System.out.println("");
+        System.out.println("Informe o número da opção que desejas executar: ");
+        System.out.println("1 - Inserir uma nova espécie");
+        System.out.println("2 - Inserir um novo animal");
+        System.out.println("3 - Exibir todas as espécies");
+        System.out.println("4 - Exibir todos os animais");
+        System.out.println("5 - Exibir animais com expectativa de vida maior que 10 anos");
+        System.out.println("6 - Exibir especies ordenadas de acordo com a quantidade de animais que cada uma possui")
+        System.out.println("Digite 0 para sair");
+        System.out.print("Sua opção: ");
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
+    }
+}

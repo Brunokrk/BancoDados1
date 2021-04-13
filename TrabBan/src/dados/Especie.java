@@ -4,6 +4,7 @@ public class Especie {
 	private int codEspecie;
 	private String nomeEspecie;
 	private int expectativaEspecie;
+	private int max; //usado apenas para ultima consulta (opção 6)
 	
 	public Especie(int codEspecie, String nomeEspecie, int expectativaEspecie) {
 		this.codEspecie = codEspecie;

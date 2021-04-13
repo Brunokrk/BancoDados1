@@ -24,7 +24,14 @@ public class AnimalDAO {
 			insert = conexao.prepareStatement("insert into animais values(?,?,?,?,?,?)");
 			selectAll = conexao.prepareStatement("select * from animais");
 			join = conexao.prepareStatement("select a.nomeanimal from animais a join especies e on a.codespecie = e.codespecie where e.expectativaespecie > 10");
-			
+			subagreg = conexao.prepareStatement("(select table2.nomeespecie, table2.codespecie, table2.max from \r\n"
+					+ "(select table1.nomeespecie, table1.codespecie, MAX(cont) from \r\n"
+					+ "(select e.nomeespecie, a.codespecie, count(*) as cont from animais a join\r\n"
+					+ "especies e on a.codespecie = e.codespecie group by a.codespecie, e.nomeespecie) as table1\r\n"
+					+ "group by table1.nomeespecie, table1.codespecie)as table2\r\n"
+					+ "group by table2.nomeespecie, table2.codespecie, table2.max\r\n"
+					+ "order by table2.max desc)\r\n"
+					+ "");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -93,5 +100,27 @@ public class AnimalDAO {
 		return animais;
 	}
 	
-	
+	public List<Especie> subagreg(){
+		List<Especie> especies = new ArrayList<Especie>();
+		
+		try {
+			ResultSet rs = subagreg.executeQuery();
+			while(rs.next()) {
+				Especie e = new Especie();
+				String nome = rs.getString(1);
+				int codespecie = rs.getInt(2);
+				int max = rs.getInt(3);
+				especies.add(e);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return especies;
+	}
 }
+
+
+
+
+
+

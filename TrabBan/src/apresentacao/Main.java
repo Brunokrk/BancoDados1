@@ -6,6 +6,8 @@ import persistencia.AnimalDAO;
 import java.sql.Date;
 
 import java.util.List;
+import java.util.Scanner;
+
 import dados.Especie;
 
 import dados.Animal;
@@ -15,39 +17,92 @@ public class Main {
 	private static EspecieDAO especieDAO;
 	private static AnimalDAO animalDAO;
 	
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		//Testando Banco
-		//Especie e1 = new Especie(14, "Bruno", 12);
-		//especieDAO.getInstance().insert(e1);
-		
-		String datastr = "2017-10-10";
-		Date date = Date.valueOf(datastr);
-		Animal a1 = new Animal("Mel", 67, 1, 10, 9, date);
-		animalDAO.getInstance().insert(a1);		
-		
-		//List<Especie> esps = especieDAO.getInstance().selectAll();
-		//for(Especie e: esps) {
-		//	System.out.println(e.toString());
-		//}
-		
-		//static Date valueOf(String date) -> conversão de string para data
-		
-		//String datastr = "2017-10-10";
-		//Date date = Date.valueOf(datastr);
-		//Animal animal = new Animal("Mel", 27, 2, 10, 9, date);
-		//animalDAO.getInstance().insert(animal);
-		
-		//List<Animal> anis = animalDAO.getInstance().selectAll();
-		//for(Animal a : anis) {
-		//	System.out.println(a.toString());
-		//}
-		
-		//List<Animal> anis = animalDAO.getInstance().join();
-		//for(Animal a : anis) {
-			//System.out.println(a.getNomeAnimal());
-		//}
-
+		int op = -1;
+		while(op!=0) {
+			op = menu();
+			switch (op){
+            	case 1: 
+            		especieDAO.insert(novaEspecie());
+            		break;
+            	case 2: 
+            		animalDAO.insert(novoAnimal());
+                    break;
+            	case 3: 
+            		printaTabelasEspecies(especieDAO.getInstance().selectAll());
+          
+                    break;
+            	case 4: 
+            		printaTabelasAnimais(animalDAO.getInstance().selectAll());
+                    break;
+            	case 5:
+            		animalDAO.join();
+                    break;
+            	case 6:
+            		animalDAO.subagreg();
+            		break;
+			}
+		}
+	}
+	
+	
+	private static int menu() {
+        System.out.println("");
+        System.out.println("Informe o número da opção que desejas executar: ");
+        System.out.println("1 - Inserir uma nova espécie");
+        System.out.println("2 - Inserir um novo animal");
+        System.out.println("3 - Exibir todas as espécies");
+        System.out.println("4 - Exibir todos os animais");
+        System.out.println("5 - Exibir animais com expectativa de vida maior que 10 anos");
+        System.out.println("6 - Exibir especies ordenadas de acordo com a quantidade de animais que cada uma possui");
+        System.out.println("Digite 0 para sair");
+        System.out.print("Sua opção: ");
+        Scanner input = new Scanner(System.in);
+        return Integer.parseInt(input.nextLine());
+    }
+	
+	private static Especie novaEspecie() {
+		Scanner input = new Scanner(System.in);
+		Especie especie = new Especie();
+		System.out.println("Informe o codigo da nova espécie:");
+		especie.setCodEspecie(Integer.parseInt(input.nextLine()));
+		especie.setExpectativaEspecie(Integer.parseInt(input.nextLine()));
+		especie.setNomeEspecie(input.nextLine());
+		return especie;
+	}
+	
+	private static Animal novoAnimal() {
+		Scanner input = new Scanner(System.in); 
+		Animal animal = new Animal();
+		System.out.println("Informe o codigo do novo animal");
+		animal.setCodAnimal(Integer.parseInt(input.nextLine()));
+		System.out.println("Informe o nome do novo animal");
+		animal.setNomeAnimal(input.nextLine());
+		System.out.println("Informe o codigo da mãe do novo animal");
+		animal.setCodAnimalMae(Integer.parseInt(input.nextLine()));
+		System.out.println("Informe o codigo do pai do novo animal");
+		animal.setCodAnimalPai(Integer.parseInt(input.nextLine()));
+		System.out.println("Informe o codigo da especie do novo animal");
+		animal.setCodEspecie(Integer.parseInt(input.nextLine()));
+		System.out.println("Informe a data de nascimento do novo animal");
+		String datastr = input.nextLine(); //conversão de string para DATASQL
+		Date datasql = Date.valueOf(datastr);
+		animal.setDataNascimento(datasql);
+		return animal;
+	}
+	
+	private static void printaTabelasAnimais(List<Animal> lista) {
+		for (Animal a : lista) {
+			System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(a.toString());
+		}
+	}
+	
+	private static void printaTabelasEspecies(List<Especie> lista) {
+		for(Especie e : lista){
+			System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(e.toString());
+		}
 	}
 }
