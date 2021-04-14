@@ -113,9 +113,9 @@ public class AnimalDAO {
 			ResultSet rs = subagreg.executeQuery();
 			while(rs.next()) {
 				Especie e = new Especie();
-				e.setNomeEspecie(rs.getString(1));
-				e.setCodEspecie(rs.getInt(2));
-				e.setMax(rs.getInt(3));
+				String nome = rs.getString(1);
+				int codespecie = rs.getInt(2);
+				int max = rs.getInt(3);
 				especies.add(e);
 			}
 		}catch(SQLException e) {

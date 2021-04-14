@@ -1,8 +1,3 @@
-//----------------------------------------------------------
-//Bruno Marchi Pires
-//Andrei Antônio Villa
-//----------------------------------------------------------
-
 package dados;
 
 public class Especie {
@@ -21,15 +16,6 @@ public class Especie {
 		//construtor vazio para tornar opcional a utilização ou não do outro
 	}
 	
-	
-	public int getMax() {
-		return max;
-	}
-
-	public void setMax(int max) {
-		this.max = max;
-	}
-
 	public int getCodEspecie() {
 		return codEspecie;
 	}

@@ -35,19 +35,18 @@ public class Main {
             		animalDAO.insert(novoAnimal());
                     break;
             	case 3: 
-            		printaTabelasEspecies("",especieDAO.getInstance().selectAll());
+            		printaTabelasEspecies(especieDAO.getInstance().selectAll());
           
                     break;
             	case 4: 
-            		printaTabelasAnimais("",animalDAO.getInstance().selectAll());
+            		printaTabelasAnimais(animalDAO.getInstance().selectAll());
                     break;
             	case 5:
             		List<Animal> animais = animalDAO.getInstance().join();
-            		printaTabelasAnimais("join", animais);
+            		printaTabelasAniamis("join", animais);
                     break;
             	case 6:
-            		List<Especie>especies = animalDAO.getInstance().subagreg();
-            		printaTabelasEspecies("subagreg", especies);
+            		animalDAO.subagreg();
             		break;
 			}
 		}
@@ -101,34 +100,17 @@ public class Main {
 		return animal;
 	}
 	
-	private static void printaTabelasAnimais(String choice, List<Animal> lista) {
-		if (choice == ""){
-			for (Animal a : lista) {
-				System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(a.toString());
-			}	
-		}else {
-			//join
-			for (Animal a : lista) {
-				System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(a.getNomeAnimal());
-			}
+	private static void printaTabelasAnimais(List<Animal> lista) {
+		for (Animal a : lista) {
+			System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(a.toString());
 		}
 	}
 	
-	private static void printaTabelasEspecies(String choice, List<Especie> lista) {
-		
-		if(choice == "") {
-			for(Especie e : lista){
-				System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(e.toString());
-			}
-		}else {
-			//subagreg
-			for(Especie e : lista){
-				System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println("CodEspecie: "+e.getCodEspecie()+"    NomeEspecie: "+ e.getNomeEspecie()+"     QuantidadeAnimais: "+ e.getMax());
-			}
+	private static void printaTabelasEspecies(List<Especie> lista) {
+		for(Especie e : lista){
+			System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(e.toString());
 		}
 	}
 }

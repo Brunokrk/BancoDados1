@@ -35,7 +35,7 @@ public class Main {
             		animalDAO.insert(novoAnimal());
                     break;
             	case 3: 
-            		printaTabelasEspecies("",especieDAO.getInstance().selectAll());
+            		printaTabelasEspecies(especieDAO.getInstance().selectAll());
           
                     break;
             	case 4: 

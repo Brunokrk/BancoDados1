@@ -35,7 +35,7 @@ public class Main {
             		animalDAO.insert(novoAnimal());
                     break;
             	case 3: 
-            		printaTabelasEspecies("",especieDAO.getInstance().selectAll());
+            		printaTabelasEspecies(especieDAO.getInstance().selectAll());
           
                     break;
             	case 4: 
@@ -116,19 +116,10 @@ public class Main {
 		}
 	}
 	
-	private static void printaTabelasEspecies(String choice, List<Especie> lista) {
-		
-		if(choice == "") {
-			for(Especie e : lista){
-				System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(e.toString());
-			}
-		}else {
-			//subagreg
-			for(Especie e : lista){
-				System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println("CodEspecie: "+e.getCodEspecie()+"    NomeEspecie: "+ e.getNomeEspecie()+"     QuantidadeAnimais: "+ e.getMax());
-			}
+	private static void printaTabelasEspecies(List<Especie> lista) {
+		for(Especie e : lista){
+			System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(e.toString());
 		}
 	}
 }

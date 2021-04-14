@@ -1,8 +1,3 @@
-//----------------------------------------------------------
-//Bruno Marchi Pires
-//Andrei Antônio Villa
-//----------------------------------------------------------
-
 package apresentacao;
 
 import persistencia.EspecieDAO;
@@ -35,19 +30,17 @@ public class Main {
             		animalDAO.insert(novoAnimal());
                     break;
             	case 3: 
-            		printaTabelasEspecies("",especieDAO.getInstance().selectAll());
+            		printaTabelasEspecies(especieDAO.getInstance().selectAll());
           
                     break;
             	case 4: 
-            		printaTabelasAnimais("",animalDAO.getInstance().selectAll());
+            		printaTabelasAnimais(animalDAO.getInstance().selectAll());
                     break;
             	case 5:
-            		List<Animal> animais = animalDAO.getInstance().join();
-            		printaTabelasAnimais("join", animais);
+            		animalDAO.join();
                     break;
             	case 6:
-            		List<Especie>especies = animalDAO.getInstance().subagreg();
-            		printaTabelasEspecies("subagreg", especies);
+            		animalDAO.subagreg();
             		break;
 			}
 		}
@@ -62,7 +55,7 @@ public class Main {
         System.out.println("3 - Exibir todas as espécies");
         System.out.println("4 - Exibir todos os animais");
         System.out.println("5 - Exibir animais com expectativa de vida maior que 10 anos");
-        System.out.println("6 - Exibir especies ordenadas de acordo com a quantidade de animais que cada uma possui no zoológico");
+        System.out.println("6 - Exibir especies ordenadas de acordo com a quantidade de animais que cada uma possui");
         System.out.println("Digite 0 para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);
@@ -74,10 +67,8 @@ public class Main {
 		Especie especie = new Especie();
 		System.out.println("Informe o codigo da nova espécie:");
 		especie.setCodEspecie(Integer.parseInt(input.nextLine()));
-		System.out.println("Informe o nome da nova espécie:");
-		especie.setNomeEspecie(input.nextLine());
-		System.out.println("Informe a expectativa de vida da nova espécie:");
 		especie.setExpectativaEspecie(Integer.parseInt(input.nextLine()));
+		especie.setNomeEspecie(input.nextLine());
 		return especie;
 	}
 	
@@ -101,34 +92,17 @@ public class Main {
 		return animal;
 	}
 	
-	private static void printaTabelasAnimais(String choice, List<Animal> lista) {
-		if (choice == ""){
-			for (Animal a : lista) {
-				System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(a.toString());
-			}	
-		}else {
-			//join
-			for (Animal a : lista) {
-				System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(a.getNomeAnimal());
-			}
+	private static void printaTabelasAnimais(List<Animal> lista) {
+		for (Animal a : lista) {
+			System.out.println("____________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(a.toString());
 		}
 	}
 	
-	private static void printaTabelasEspecies(String choice, List<Especie> lista) {
-		
-		if(choice == "") {
-			for(Especie e : lista){
-				System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println(e.toString());
-			}
-		}else {
-			//subagreg
-			for(Especie e : lista){
-				System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
-				System.out.println("CodEspecie: "+e.getCodEspecie()+"    NomeEspecie: "+ e.getNomeEspecie()+"     QuantidadeAnimais: "+ e.getMax());
-			}
+	private static void printaTabelasEspecies(List<Especie> lista) {
+		for(Especie e : lista){
+			System.out.println("______________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(e.toString());
 		}
 	}
 }
